@@ -1,0 +1,313 @@
+@import 'config';
+@import 'font';
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scrollbar-width: none;
+}
+body{
+    font-family:Inter-regular;
+    position: relative;
+    @extend %grid;
+}
+#body{
+    position: fixed;
+    inset: 0 0 0 0;
+    z-index: -100;
+    background-image: $Background;
+}
+header{
+    @extend %grid;
+    
+    .heading{
+        width: 538px;
+        height: 48px;
+        border-radius: 12px;
+        background-color: $Secondary;
+        color: $Font;
+        text-align: center;
+        padding: 5px;
+        margin: auto;
+        margin-bottom: 20px;
+        text-align: center;
+        font-family: Inter-black;
+    }
+
+    form{
+        @extend %grid;
+        position: relative;
+        width: 769px;
+        height: 190px;
+        border-radius: 45px;
+        background-color: rgba(55,31,110,0.48);
+        margin-bottom: 20px;
+
+        aside{
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 68px;
+            height: 50px;
+            background-color: $LightPrimary;
+            border-top-right-radius: 30px;
+            border-bottom-left-radius: 20px;
+        }
+
+        .input-area{
+            display: flex;
+
+            input{
+                @extend %input;
+                width: 540px;
+                height: 48px;
+                border-radius: 45px;
+                font-size: 20px;
+                color: #333;
+                font-family: monospace;
+                letter-spacing: 2px;
+            }
+            
+            button{
+                @extend %btn;
+                margin-left:-90px ;
+            }
+
+        }
+
+        .submit{
+            @extend %grid;
+            button[type="submit"]{
+                @extend %btn;
+                padding:6px;
+                width: 217px;
+                height: 49px;
+            }
+        }
+    }
+
+
+
+}
+main{
+    .header{
+        background-color: $Secondary;
+        color:$Font;
+        width: 333px;
+        height: 37px;
+        border-radius: 17px;
+        margin: auto;
+        padding: 5px;
+        margin-bottom: 20px;
+        h2{
+            font-style: normal;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 24px;
+            white-space: nowrap;
+        }
+    }
+    .passwords-container{
+        @extend %grid;
+        grid-template-rows: 1fr;
+        row-gap: 20px;
+        margin-bottom: 20px;
+
+
+        .container{
+            @extend %grid;
+            position: relative;
+            width: 769px;
+            height: 128px;
+            border-radius: 31px;
+            background-color: $Secondary;
+
+            header{
+                @extend %grid;
+                margin: auto;
+                margin-top: -0.8px;
+                width: 387px;
+                height: 32px;
+                border-bottom-right-radius:8px;
+                border-bottom-left-radius: 8px;
+                background-color: $DarkSecondary;
+
+                h3{
+                    color:$Font;
+                }
+            }
+
+            details{
+                position: absolute ;
+                margin-top: 5px;
+                margin-right: 15px;
+                top: 0;
+                right: 0;
+                color: $Font;
+                
+                summary{
+                    @extend %grid;
+                    // display: inline-block;
+                    text-align: center;
+                    list-style-type: none;
+                    cursor: pointer;
+                    width:38px;
+                    height:38px;
+                    border-radius: 50%;
+                    transition: ease 0.1s;
+                    
+                    &:hover{
+                        background-color:$DarkSecondary;
+
+                    }
+
+                }
+                ul{
+                    @extend %grid;
+                    text-align: center;
+                    list-style-type: none;
+                    position: absolute;
+                    right: 100%;
+                    background-color: $DarkSecondary;
+                    background: #371f6ee3;
+                    color: $SecondaryText;
+                    width: 86px;
+                    height: 61px;
+                    border-radius: 15px;
+                    cursor: pointer;
+                    // padding: 5px;
+                    overflow: hidden;
+                    li{
+                        display: flex;
+                        justify-content: center ;
+                        width: 100%;
+                        padding: 7px 20px;
+                        transition: background ease 0.3s;
+
+
+                        // &:ac
+                        &:hover{
+                            background-color: $DarkSecondary;
+                            color:$Accent;
+                            svg{
+                                path{
+                                    fill:$Accent;
+                                }
+                            }
+                        }
+                        &:active{
+                            color:$Font;
+                            svg{
+                                path{
+                                    fill:$Font;
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+            }
+
+            section{
+                display: flex;
+
+                input[type="password"]{
+                    @extend %input;
+                    width:682px;
+                    height: 38px;
+                    background-color: $DarkSecondary;
+                    color: $Font;
+                    font-family: monospace;
+                    letter-spacing: 1.2px;
+                }
+                input[type="text"]{
+                    @extend %input;
+                    width:682px;
+                    height: 38px;
+                    background-color: $DarkSecondary;
+                    color: $Font;
+                    font-family: monospace;
+                    letter-spacing: 1.2px;
+                }
+                .copy-password{
+                    @extend %btn;
+                    color: $Font;
+                    width: 58px;
+                    height: 38px;
+                    border-radius: 20px;
+                    margin-left: -40px;
+                }
+
+                input[type="url"]{
+                    @extend %input;
+                    color: $Font;
+                    width: 510px;
+                    height: 26px;
+                    background-color: $DarkSecondary;
+                    border-radius: 0;
+                    margin-bottom: -8px;
+                    font-family: monospace;
+                }
+
+                .copy-url{
+                    @extend %btn;
+                    width: 28px;
+                    height: 26px;
+                    border-radius: 7px;
+                    margin-left: -20px;
+                }
+            }
+            section[id="url"]{
+                margin:auto;
+                margin-bottom: -1px;
+            }
+        }
+    }
+}
+aside[id="new"]{
+    @extend %grid;
+    display: none;
+    position: absolute;
+    width: 543px;
+    height: 247px;
+    border-radius: 39px;
+    transform: translateX(65%);
+    background:  linear-gradient(135deg, rgba(255,143,45,0.8) 0%, rgba(72,28,205,0.8) 100%, rgba(72,28,204,0.8) 100%);
+    backdrop-filter: blur(4.5px);
+    box-shadow: 2px 2px 15px ;
+
+    form{
+        @extend %grid;
+        grid-template-rows: 1fr;
+        row-gap: 10px;
+        input{
+            @extend %input;
+            width: 499px;
+            height: 35px;
+            width: 499px;
+            height: 42px;
+            border-radius: 58px;
+            color:#333;
+            font-size: 15px;
+
+            &::placeholder{
+                font-weight: 400;
+                font-size: 15px;
+                line-height: 21px;
+                white-space: nowrap;
+            }
+        }
+        button{
+            @extend %btn;
+            width: 169.96px;
+            height: 40.23px;
+        }
+        section{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+    }
+}

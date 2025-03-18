@@ -1,0 +1,61 @@
+$Accent : #E040FB;
+$LightAccent : #e869ff;
+$LightPrimary:#D3D3D3;
+$SecondaryText:#757575;
+$DarkSecondary:#371F6E;
+$Secondary:#4D2D8D;
+$Font:#ffff;
+$Background:linear-gradient(135deg, #ff8f2d 0%, #481ccd 100%, #481ccc 100%);
+
+%btn{
+    background-color:$Accent;
+    border: none;
+    color: $Font;
+    padding: 6px;
+    border: none;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    transition: background ease 0.2s ;
+    cursor: pointer;
+
+    &:hover{
+        background-color:$LightAccent ;
+    }
+    &:active{
+        background-color: $Accent;
+    }
+}
+%input{
+    background-color: $LightPrimary;
+    border-radius: 20px;
+    text-align: center;
+    padding: 5px;
+    border: none;
+    font-family: Inter-regular;
+
+    &::placeholder{
+        text-align: center;
+        color: $SecondaryText;
+    }
+
+    &:focus{
+        outline: none;
+    }
+}
+%grid{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+.init-new{
+    header,main{
+        filter: blur(4.5px);
+        pointer-events: none;
+    }
+
+    aside[id="new"]{
+        display: grid;
+    }
+}
