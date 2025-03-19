@@ -45,14 +45,30 @@ header{
         margin-bottom: 20px;
 
         aside{
+            @extend %grid;
             position: absolute;
             right: 0;
             top: 0;
             width: 68px;
             height: 50px;
-            background-color: $LightPrimary;
+            background-color: $Accent;
             border-top-right-radius: 30px;
             border-bottom-left-radius: 20px;
+            &:hover{
+                background-color: $LightAccent;
+            }
+            &:active{
+                background-color: $Accent;
+            }
+            // background-color: red($color: #000000);
+            svg{
+                &:hover{
+                    fill:$DarkSecondary
+                }
+                &:active{
+                    fill:$Font;
+                }
+            }
         }
 
         .input-area{
@@ -145,6 +161,7 @@ main{
                 top: 0;
                 right: 0;
                 color: $Font;
+                z-index:20;
                 
                 summary{
                     @extend %grid;
@@ -184,33 +201,23 @@ main{
                         width: 100%;
                         padding: 7px 20px;
                         transition: background ease 0.3s;
-
-
-                        // &:ac
+                        
                         &:hover{
                             background-color: $DarkSecondary;
-                            color:$Accent;
-                            svg{
-                                path{
-                                    fill:$Accent;
-                                }
-                            }
+                            color: $Accent;
                         }
                         &:active{
-                            color:$Font;
-                            svg{
-                                path{
-                                    fill:$Font;
-                                }
-                            }
+                            color: $SecondaryText;
                         }
-                        
                     }
                 }
             }
 
             section{
+                position: relative;
                 display: flex;
+                justify-content: center;
+                align-items: center;
 
                 input[type="password"]{
                     @extend %input;
@@ -230,13 +237,37 @@ main{
                     font-family: monospace;
                     letter-spacing: 1.2px;
                 }
+                span{
+                    @extend %grid;
+                    // display: none;
+                    position: absolute;
+                    margin: auto;
+                    right: 10%;
+                    cursor:pointer;
+                    color: $Font;
+
+                    &:active{
+                        color:$Accent;
+                    }
+
+                }
                 .copy-password{
+                    @extend %grid;
+                    // display: none;
                     @extend %btn;
                     color: $Font;
                     width: 58px;
                     height: 38px;
                     border-radius: 20px;
                     margin-left: -40px;
+                    svg{
+                        &:hover{
+                            fill:$DarkSecondary;
+                        }
+                        &:active{
+                            fill:$Font;
+                        }
+                    }
                 }
 
                 input[type="url"]{
@@ -246,21 +277,38 @@ main{
                     height: 26px;
                     background-color: $DarkSecondary;
                     border-radius: 0;
-                    margin-bottom: -8px;
+                    // margin-bottom: 1px;
                     font-family: monospace;
                 }
 
                 .copy-url{
+                    @extend %grid;
                     @extend %btn;
                     width: 28px;
                     height: 26px;
                     border-radius: 7px;
                     margin-left: -20px;
+
+                    svg{
+                        &:hover{
+                            fill:$DarkSecondary;
+                        }
+                        &:active{
+                            fill:$Font;
+                        }
+                    }
+                }
+            }
+            section[id="p"]{
+                &:hover{
+                    span{
+                        display: grid;
+                    }
                 }
             }
             section[id="url"]{
                 margin:auto;
-                margin-bottom: -1px;
+                margin-bottom: -0.4px;
             }
         }
     }
@@ -272,7 +320,8 @@ aside[id="new"]{
     width: 543px;
     height: 247px;
     border-radius: 39px;
-    transform: translateX(65%);
+    transform: translateX(calc(100vw/3.5));
+    // transform: translateX(65%);
     background:  linear-gradient(135deg, rgba(255,143,45,0.8) 0%, rgba(72,28,205,0.8) 100%, rgba(72,28,204,0.8) 100%);
     backdrop-filter: blur(4.5px);
     box-shadow: 2px 2px 15px ;
