@@ -41,7 +41,7 @@ header{
         width: 769px;
         height: 190px;
         border-radius: 45px;
-        background-color: rgba(55,31,110,0.48);
+        background-color: #371f6e7a;
         margin-bottom: 20px;
 
         aside{
@@ -161,8 +161,7 @@ main{
                 top: 0;
                 right: 0;
                 color: $Font;
-                z-index:20;
-                
+                z-index:2;
                 summary{
                     @extend %grid;
                     // display: inline-block;
@@ -313,50 +312,62 @@ main{
         }
     }
 }
-aside[id="new"]{
+.con{
     @extend %grid;
     display: none;
-    position: absolute;
-    width: 543px;
-    height: 247px;
-    border-radius: 39px;
-    transform: translateX(calc(100vw/3.5));
-    // transform: translateX(65%);
-    background:  linear-gradient(135deg, rgba(255,143,45,0.8) 0%, rgba(72,28,205,0.8) 100%, rgba(72,28,204,0.8) 100%);
-    backdrop-filter: blur(4.5px);
-    box-shadow: 2px 2px 15px ;
+    position: fixed;
+    z-index: 2;
+    transition: 0.5s  ease;
 
-    form{
+    inset:0 0 0 0;
+    backdrop-filter: blur(2px);
+    background-color: #371f6e7a;
+    
+    aside[id="new"]{
         @extend %grid;
-        grid-template-rows: 1fr;
-        row-gap: 10px;
-        input{
-            @extend %input;
-            width: 499px;
-            height: 35px;
-            width: 499px;
-            height: 42px;
-            border-radius: 58px;
-            color:#333;
-            font-size: 15px;
-
-            &::placeholder{
-                font-weight: 400;
+        // display: none;
+        // position: absolute;
+        width: 543px;
+        height: 247px;
+        border-radius: 39px;
+        // transform: translate(calc(100vw/3.5) ,1%);
+        // transform: translateX(65%);
+        background:  linear-gradient(135deg, rgba(255,143,45,0.8) 0%, rgba(72,28,205,0.8) 100%, rgba(72,28,204,0.8) 100%);
+        backdrop-filter: blur(4.5px);
+        box-shadow: 2px 2px 15px ;
+    
+        form{
+            @extend %grid;
+            grid-template-rows: 1fr;
+            row-gap: 10px;
+            input{
+                @extend %input;
+                width: 499px;
+                height: 35px;
+                width: 499px;
+                height: 42px;
+                border-radius: 58px;
+                color:#333;
                 font-size: 15px;
-                line-height: 21px;
-                white-space: nowrap;
+    
+                &::placeholder{
+                    font-weight: 400;
+                    font-size: 15px;
+                    line-height: 21px;
+                    white-space: nowrap;
+                }
             }
+            button{
+                @extend %btn;
+                width: 169.96px;
+                height: 40.23px;
+            }
+            section{
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+            }
+    
         }
-        button{
-            @extend %btn;
-            width: 169.96px;
-            height: 40.23px;
-        }
-        section{
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-        }
-
     }
 }

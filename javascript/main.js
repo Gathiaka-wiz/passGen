@@ -1,15 +1,4 @@
-let passwords = [
-    // {
-    //     name:"Password one",
-    //     value:"nvjsbubvbiuevbubbvv",
-    //     link:""
-    // },
-    // {
-    //     name:"Password Two",
-    //     value:"nvjsbubvbiuevbubbvv",
-    //     link:""
-    // },
-];
+let passwords = [];
 const body = document.body;
 let newPasswordContent = document.querySelector('.new-password-content');
 const passwordsContainer = document.querySelector('.passwords-container');
@@ -50,24 +39,25 @@ const generatePassword = () => {
     let caps =  "ABCDEFGHIJKLMNOPQRSTUVWXWZ";
     let small = "abcdefghijklmnopqrstuvwxwz";
     let numbers = "1234567890";
-    let symbols = "`'~!@#$%^&*()_-=+{]}[|\;:<>.,/?";
+    let symbols = "`'~!@#$%^&*()=+{]}[|\;:<>.,/?";
     let allChars = caps + small + numbers + symbols;
     let password = '';
 
+    password += symbols[Math.floor(Math.random() * symbols.length)];
     password += caps[Math.floor(Math.random() * caps.length)];
     password += numbers[Math.floor(Math.random() * numbers.length)];
-        password += small[Math.floor(Math.random() * small.length)];
-        password += symbols[Math.floor(Math.random() * symbols.length)];
+    password += small[Math.floor(Math.random() * small.length)];
         
-        for (let i = 1; i<=max ; i ++  ) {
-            
+    for (let i = 1; i<=max ; i ++  ) {
             password += allChars[Math.floor(Math.random() * allChars.length)];
         }
 
         pass.value = password
 
 };
+
 generatePassword();
+
 const displayPasswords = () => {
     passwordsContainer.innerHTML = '';
     if(passwords.length > 0){
@@ -127,15 +117,14 @@ const displayPasswords = () => {
 };
 const initNew = () => {
     body.classList.add('init-new');
+        document.querySelector('.new-password-name').focus();
 };
 const removeNew = () => {
     const newPasswordName = document.querySelector('.new-password-name');
     const newPasswordUrl = document.querySelector('.new-password-url');
 
-    newPasswordName.value = '';
-    newPasswordContent.value = '';
-    newPasswordUrl.value = '';
     body.classList.remove('init-new');
+    body.classList.contains('edit-new') ? body.classList.remove('edit-new'): "" ;
 };
 const copyPassword = () => {
     let input = ((event.target.parentElement.parentElement).querySelector('[name="pass"]')).value;
@@ -151,46 +140,67 @@ const copy = (input) => {
 document.querySelector('#new').querySelector('.cancel-password-save').addEventListener('click' ,() => removeNew());
 
 newForm.addEventListener('submit' ,(e) => {
-    e.preventDefault();
-    const newPasswordName = document.querySelector('.new-password-name');
-    const newPasswordUrl = document.querySelector('.new-password-url');
-    // const newPasswordContent = document.querySelector('.new-password-content');
+    if(!body.classList.contains('edit-new')){
+        e.preventDefault();
+        const newPasswordName = document.querySelector('.new-password-name');
+        const newPasswordUrl = document.querySelector('.new-password-url');
+            
+        let newPassword = {
+            name:newPasswordName.value,
+            value:newPasswordContent.value,
+            link:newPasswordUrl.value
+        };
     
-
-    let newPassword = {
-        name:newPasswordName.value,
-        value:newPasswordContent.value,
-        link:newPasswordUrl.value
-    };
-
-    if(passwords.length <= 0){
-        passwords = [newPassword];
-        
-        displayPasswords();
-    }else{
-        passwords.push(newPassword);
-        displayPasswords();
+        if(passwords.length <= 0){
+            passwords = [newPassword];
+            
+            displayPasswords();
+        }else{
+            passwords.push(newPassword);
+            displayPasswords();
+        }
+        removeNew();
     }
 
-
-    // pass = ''
-    setContent();
-    removeNew();
 });
 
 displayPasswords();
 
-// editBtn.addEventListener('click', () => {});
 
 const editDetails = (key) => {
+    initNew();
+    body.classList.add('edit-new');
 
-    // passwords[key] = {
-    //     name:"",
-    //     value:"",
-    //     url:""
-    // };
+    document.querySelector('.new-password-name').value = passwords[key].name;
+    document.querySelector('.new-password-content').value = passwords[key].value;
+    document.querySelector('.new-password-url').value = passwords[key].link !== undefined ? passwords[key].link : "" ;
+    
+    
+    newForm.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-    displayPasswords();
+        let current =  passwords[key];
+        
+        if (current){
+            let newContent = document.querySelector('.new-password-content').value;
+            let newLink = document.querySelector('.new-password-url').value;
+            let newName = document.querySelector('.new-password-name').value === undefined ? "" : document.querySelector('.new-password-name').value;
+
+            let  newValue = {
+                name:newName,
+                value:newContent,
+                link:newLink 
+            };
+
+            passwords[key] = newValue;
+
+            displayPasswords();
+            removeNew();
+        }
+
+
+    });
+    
 }
 
 const deletePassword = (key) => {
