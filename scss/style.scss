@@ -1,5 +1,4 @@
 @import 'config';
-@import 'font';
 
 *{
     padding: 0;
@@ -8,7 +7,7 @@
     scrollbar-width: none;
 }
 body{
-    font-family:Inter-regular;
+    font-family:'Times New Roman', Times, serif;
     position: relative;
     @extend %grid;
 }
@@ -22,8 +21,8 @@ header{
     @extend %grid;
     
     .heading{
-        width: 538px;
-        height: 48px;
+        width: 400px;
+        height: 36px;
         border-radius: 12px;
         background-color: $Secondary;
         color: $Font;
@@ -31,8 +30,10 @@ header{
         padding: 5px;
         margin: auto;
         margin-bottom: 20px;
+        font-size:12px;
+        font-weight: 100;
         text-align: center;
-        font-family: Inter-black;
+        font-family:'Times New Roman' ;
     }
 
     form{
@@ -60,7 +61,6 @@ header{
             &:active{
                 background-color: $Accent;
             }
-            // background-color: red($color: #000000);
             svg{
                 &:hover{
                     fill:$DarkSecondary
@@ -73,6 +73,7 @@ header{
 
         .input-area{
             display: flex;
+            justify-content: center;
 
             input{
                 @extend %input;
@@ -134,7 +135,8 @@ main{
         .container{
             @extend %grid;
             position: relative;
-            width: 769px;
+            // width: 769px;
+            width:95vw;
             height: 128px;
             border-radius: 31px;
             background-color: $Secondary;
@@ -164,7 +166,6 @@ main{
                 z-index:2;
                 summary{
                     @extend %grid;
-                    // display: inline-block;
                     text-align: center;
                     list-style-type: none;
                     cursor: pointer;
@@ -192,7 +193,6 @@ main{
                     height: 61px;
                     border-radius: 15px;
                     cursor: pointer;
-                    // padding: 5px;
                     overflow: hidden;
                     li{
                         display: flex;
@@ -238,7 +238,6 @@ main{
                 }
                 span{
                     @extend %grid;
-                    // display: none;
                     position: absolute;
                     margin: auto;
                     right: 10%;
@@ -252,7 +251,6 @@ main{
                 }
                 .copy-password{
                     @extend %grid;
-                    // display: none;
                     @extend %btn;
                     color: $Font;
                     width: 58px;
@@ -276,7 +274,6 @@ main{
                     height: 26px;
                     background-color: $DarkSecondary;
                     border-radius: 0;
-                    // margin-bottom: 1px;
                     font-family: monospace;
                 }
 
@@ -325,13 +322,9 @@ main{
     
     aside[id="new"]{
         @extend %grid;
-        // display: none;
-        // position: absolute;
         width: 543px;
         height: 247px;
         border-radius: 39px;
-        // transform: translate(calc(100vw/3.5) ,1%);
-        // transform: translateX(65%);
         background:  linear-gradient(135deg, rgba(255,143,45,0.8) 0%, rgba(72,28,205,0.8) 100%, rgba(72,28,204,0.8) 100%);
         backdrop-filter: blur(4.5px);
         box-shadow: 2px 2px 15px ;
@@ -371,3 +364,6 @@ main{
         }
     }
 }
+
+
+@import 'responsive';

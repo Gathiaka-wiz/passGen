@@ -7,7 +7,13 @@ $Secondary:#4D2D8D;
 $Font:#ffff;
 $Background:linear-gradient(135deg, #ff8f2d 0%, #481ccd 100%, #481ccc 100%);
 
+%grid{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
 %btn{
+    @extend %grid;
     background-color:$Accent;
     border: none;
     color: $Font;
@@ -43,11 +49,6 @@ $Background:linear-gradient(135deg, #ff8f2d 0%, #481ccd 100%, #481ccc 100%);
     &:focus{
         outline: none;
     }
-}
-%grid{
-    display: grid;
-    align-items: center;
-    justify-content: center;
 }
 .init-new{
     header,main{
